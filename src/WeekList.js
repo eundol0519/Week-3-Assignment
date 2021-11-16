@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router';
 
 const WeekList = (props) => {
 
-    const week = props.week
+    const week = props.week;
+    const history = useHistory();
 
     return (
         <div>
@@ -11,12 +13,17 @@ const WeekList = (props) => {
                 return (
                     <Contents key={index} style={{display:'flex'}}>
                         <Day>{day}</Day>
-                        <Circle></Circle>
-                        <Circle></Circle>
-                        <Circle></Circle>
-                        <Circle></Circle>
-                        <Circle></Circle>
-                        <Square></Square>
+                        <Circle key={1}></Circle>
+                        <Circle key={2}></Circle>
+                        <Circle key={3}></Circle>
+                        <Circle key={4}></Circle>
+                        <Circle key={5}></Circle>
+                        <Square onClick={()=>{
+                            history.push({
+                                pathname:'/leaveARating',
+                                state: day
+                            })
+                        }} day={day}></Square>
                     </Contents>
                 );
             })}

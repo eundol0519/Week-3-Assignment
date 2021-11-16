@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import './App.css';
-import LeaveARating from './LeaveARating';
-import WeekList from './WeekList'
+import WeekList from './WeekList';
+import LeaveARating from "./LeaveARating";
+import NotFound from "./NotFound"
+import { Route, Switch } from "react-router-dom";
 
 function App() {
 
@@ -9,8 +11,17 @@ function App() {
 
   return (
     <Wrap>
-      <Title>내 일주일은?</Title>
-      <WeekList week={week}></WeekList>
+      <Switch>
+        <Route path="/" exact>
+          <Title>내 일주일은?</Title>
+          <WeekList week={week}></WeekList>
+        </Route>
+        <Route path='/weekList' exact component={WeekList}></Route>
+        <Route path='/leaveARating' exact component={LeaveARating}></Route>
+        <Route>
+          <NotFound></NotFound>
+        </Route>
+      </Switch>
     </Wrap>
   );
 }
@@ -24,7 +35,7 @@ const Wrap = styled.div`
 
 const Title = styled.h1`
   padding-top: 40px;
-  font-size: 25px;
+  font-size: 20px;
   text-align : center;
 `;
 
