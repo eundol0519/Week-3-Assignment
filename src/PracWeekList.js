@@ -12,7 +12,7 @@ const PracWeekList = (props) => {
 
     let randomStar = (day) => {
 
-        const dayCheck = document.getElementById(day).id
+        const dayCheck = document.getElementById(day).id   
         // document.getElementById(day) -> <div id="월" class="sc-bdvvtL bejxkP" style="display: flex;"><h1 class="sc-gsDKAQ kSiiLT">월</h1><div class="sc-dkPtRN ezLQeb" style="width: 30px; height: 30px; border-radius: 50%; background-color: yellow; margin: 5px;"></div><div class="sc-dkPtRN ezLQeb" style="width: 30px; height: 30px; border-radius: 50%; background-color: yellow; margin: 5px;"></div><div class="sc-dkPtRN ezLQeb" style="width: 30px; height: 30px; border-radius: 50%; background-color: yellow; margin: 5px;"></div><div class="sc-dkPtRN ezLQeb" style="width: 30px; height: 30px; border-radius: 50%; background-color: rgb(221, 221, 221); margin: 5px;"></div><div class="sc-dkPtRN ezLQeb" style="width: 30px; height: 30px; border-radius: 50%; background-color: rgb(221, 221, 221); margin: 5px;"></div><div class="sc-hKwDye lbfBcO"></div></div>
         // document.getElementById(day).id -> 월
         // week[index]===dayCheck -> true

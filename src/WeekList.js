@@ -46,65 +46,71 @@ const WeekList = (props) => {
     // 6: { day: '토', rate: 2 }
 
     return (
-        <>
-            <div>
-                {week_rates.map((w, idx) => {
-                    return (
-                        <div
-                            key={`week_day_${idx}`}
-                            style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                marginLeft: "20px",
-                                marginTop: "10px",
-                                width: "100%",
+        <div>
+            {week_rates.map((w, idx) => {
+                return (
+                    <Contents key={`week_day_${idx}`}>
+                        <WeekStyle>
+                            {w.day}
+                        </WeekStyle>
+                        {Array.from({ length: 5 }, (item, idx) => {
+                            return (
+                                <SquareStyle
+                                    key={idx}
+                                    style={{ backgroundColor: w.rate < idx ? "#ddd" : "yellow" }}
+                                ></SquareStyle>
+                            );
+                        })}
+                        <ClickStyle
+                            onClick={() => {
+                                history.push({
+                                    pathname: '/leaveARating', // 이동할 경로
+                                    state: w.day // 가지고 갈 값
+                                })
                             }}
-                        >
-                            <p style={{ margin: "0 0.5rem 0 0", fontWeight: "bold" }}>
-                                {w.day}
-                            </p>
-                            {Array.from({ length: 5 }, (item, idx) => {
-                                return (
-                                    <div
-                                        key={idx}
-                                        style={{
-                                            width: "30px",
-                                            height: "30px",
-                                            borderRadius: "30px",
-                                            margin: "5px",
-                                            backgroundColor: w.rate < idx ? "#ddd" : "#ffeb3b",
-                                        }}
-                                    ></div>
-                                );
-                            })}
-                            <div
-                                style={{
-                                    appearance: "none",
-                                    backgroundColor: "transparent",
-                                    borderBottom: "15px solid transparent",
-                                    borderTop: "15px solid transparent",
-                                    borderLeft: "30px solid skyblue",
-                                    borderRight: "30px solid transparent",
-                                    marginLeft: "10px",
-                                    width: "0",
-                                    height: "0",
-                                    color: "#fff",
-                                    cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                    history.push({
-                                        pathname: '/leaveARating',
-                                        state: w.day
-                                    })
-                                }}
-                            ></div>
-                        </div>
-                    );
-                })}
-            </div>
-        </>
+                        ></ClickStyle>
+                    </Contents>
+                );
+            })}
+        </div>
     );
 };
+
+const Contents = styled.div`
+    width: 100%;
+    margin-top: 10px;
+    align-items: center;
+    // 세로축을 기준으로 정렬한다.
+    justify-content: center;
+    // 가로축을 기준으로 좌우를 정렬한다.
+    display: flex;
+    margin-Left: 10px;
+`;
+
+const WeekStyle = styled.p`
+    margin: 10px;
+    font-weight: bold;
+`
+
+const SquareStyle = styled.div`
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    margin: 5px;
+`
+
+const ClickStyle = styled.div`
+    appearance: none; // 외형 모습
+    background-color: transparent;
+    border-bottom: 15px solid transparent;
+    border-top: 15px solid transparent;
+    border-left: 30px solid skyblue;
+    border-right: 30px solid transparent;
+    margin-left: 10px;
+    width: 0;
+    height: 0;
+    color: #fff;
+    cursor: pointer;
+`
 
 export default WeekList;

@@ -8,6 +8,7 @@ const LeaveARating = ({location}) => {
     const day = location.state;
 
     let [starStyle, setStarStyle] = React.useState(['unStar', 'unStar', 'unStar', 'unStar', 'unStar'])
+    // useState를 사용해서 별이 어떤 상태인 지 담는다.
 
     const unstar = {    
         width: "30px",
@@ -43,6 +44,9 @@ const LeaveARating = ({location}) => {
             }
         }
     }
+    // index 인자로 받아온 값을(몇번째 별인 지)
+    // if문을 사용해서 setStarStyle의 값을 바꾼다.
+    // 배열의 값을 바꿀 때는 배열로 바꿔야 한다.
 
     return (
         <div style={{marginTop:"50px"}}>
@@ -78,7 +82,7 @@ const DayOfWeek = styled.p`
     border: 1px solid orange;
     border-radius: 5px;
     background: orange;
-    font-color: white;
+    color: white;
     width: 80px;
     text-align:center;
     margin-right: 10px;
